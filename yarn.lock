@@ -6039,6 +6039,20 @@ ngx-skeleton-loader@^7.0.0:
     perf-marks "^1.13.4"
     tslib "^2.0.0"
 
+ngx-spinner@^15.0.1:
+  version "15.0.1"
+  resolved "https://registry.yarnpkg.com/ngx-spinner/-/ngx-spinner-15.0.1.tgz#3256b01dd3e1906852528d8a531206c6cbb38772"
+  integrity sha512-7DjETmBpuXTwI68ad1xMKpwt4Cyz1eyu8E7AJcFiKa+8JAnbo0k1qfvWur0aemncRNxDxHoyl6jw42MsnE/B+g==
+  dependencies:
+    tslib "^2.3.0"
+
+ngx-toastr@^16.1.1:
+  version "16.1.1"
+  resolved "https://registry.yarnpkg.com/ngx-toastr/-/ngx-toastr-16.1.1.tgz#ef7907db71523126b7d10b32dff3e142bb650ac4"
+  integrity sha512-obUGE5RYC/62/AYiZvZcVw/mMBSI0KGJH7VhdiQQ2jsysp05m8nndI1shGhm6X1t/6/z/qj7NFpvSuUyhdweNg==
+  dependencies:
+    tslib "^2.3.0"
+
 nice-napi@^1.0.2:
   version "1.0.2"
   resolved "https://registry.npmjs.org/nice-napi/-/nice-napi-1.0.2.tgz"

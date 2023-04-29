@@ -4,6 +4,10 @@ import {BrowserAnimationsModule} from "@angular/platform-browser/animations";
 import {TranslateLoader, TranslateModule} from "@ngx-translate/core";
 import {HttpClient} from "@angular/common/http";
 import {TranslateHttpLoader} from "@ngx-translate/http-loader";
+import {ServiceWorkerModule} from "@angular/service-worker";
+import {NgxSkeletonLoaderModule} from "ngx-skeleton-loader";
+import {NgxSpinnerModule} from "ngx-spinner";
+import {ToastrModule, ToastrService} from "ngx-toastr";
 
 import {AppComponent} from "./app.component";
 import {SharedModule} from "./shared/shared.module";
@@ -11,7 +15,6 @@ import {LayoutModule} from "./layout/layout.module";
 import {HomeModule} from "./home/home.module";
 import {AppRoutingModule} from "./app-routing.module";
 import {MainConfigurationService} from "./shared/services/main-configuration.service";
-import {ServiceWorkerModule} from "@angular/service-worker";
 
 export function HttpLoaderFactory(http: HttpClient) {
   return new TranslateHttpLoader(http, "./assets/i18n/", ".json");
@@ -26,6 +29,9 @@ export function HttpLoaderFactory(http: HttpClient) {
     AppRoutingModule,
     LayoutModule,
     HomeModule,
+    ToastrModule.forRoot(),
+    // IMPORTANT: if changing the type, make a change also in app.module and angular.json (style import)
+    NgxSpinnerModule.forRoot({type: "ball-scale-multiple"}),
     TranslateModule.forRoot({
       loader: {
         provide: TranslateLoader,
@@ -39,8 +45,12 @@ export function HttpLoaderFactory(http: HttpClient) {
       // or after 30 seconds (whichever comes first).
       registrationStrategy: "registerWhenStable:30000",
     }),
+    NgxSkeletonLoaderModule.forRoot({
+      animation: "pulse",
+      loadingText: "Loading...",
+    }),
   ],
-  providers: [MainConfigurationService],
+  providers: [MainConfigurationService, ToastrService],
   bootstrap: [AppComponent],
 })
 export class AppModule {}
