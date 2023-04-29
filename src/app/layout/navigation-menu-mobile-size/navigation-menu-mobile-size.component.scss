@@ -1,0 +1,7 @@
+.navigation__menu-item {
+  transition: 0.15s;
+
+  &:hover {
+    color: var(--secondary-main);
+  }
+}

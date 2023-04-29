@@ -1,0 +1,15 @@
+<button [matMenuTriggerFor]="languageMenu" mat-icon-button>
+  <mat-icon color="primary" class="!text-text-secondary !hover:text-white"
+    >g_translate
+  </mat-icon>
+</button>
+<mat-menu #languageMenu>
+  <button
+    *ngFor="let lang of languages"
+    (click)="changeLanguage(lang)"
+    class="flex justify-start items-center py-1 px-4 gap-3"
+  >
+    <img [src]="'./assets/images/flags/' + lang + '.svg'" class="w-4" />
+    <p class="text-sm text-black">{{ "langs." + lang | translate }}</p>
+  </button>
+</mat-menu>

@@ -1,0 +1,14 @@
+<mat-drawer-container class="min-h-screen" [hasBackdrop]="true" [dir]="dir">
+  <mat-drawer #drawer mode="over" class="w-72 !bg-background-default">
+    <app-navigation-menu-mobile-size
+      (clickCloseIcon)="drawer.toggle()"
+    ></app-navigation-menu-mobile-size>
+  </mat-drawer>
+  <mat-drawer-content class="bg-background-default relative">
+    <app-header (clickMenuIcon)="drawer.toggle()"></app-header>
+    <main class="bg-background-default overflow-x-hidden">
+      <router-outlet></router-outlet>
+    </main>
+    <app-footer></app-footer>
+  </mat-drawer-content>
+</mat-drawer-container>

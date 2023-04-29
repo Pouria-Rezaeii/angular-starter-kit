@@ -1,0 +1,14 @@
+<div class="slider--container">
+  <div class="h-full relative">
+    <div class="keen-slider keen-slider--vertical" #sliderRef>
+      <ng-content></ng-content>
+    </div>
+  </div>
+  <div class="slider--dots">
+    <button
+      (click)="slider?.moveToIdx(i)"
+      *ngFor="let slide of dotHelper; let i = index"
+      [class]="'slider--dot ' + (i === currentSlide ? 'active' : '')"
+    ></button>
+  </div>
+</div>

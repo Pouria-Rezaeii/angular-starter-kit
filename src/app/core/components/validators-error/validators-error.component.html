@@ -1,0 +1,29 @@
+<!-- IMPORTANT: classes may not work properly for extra space if there is no class provided from outside-->
+<mat-hint *ngIf="form" [class]="'validators-error ' + class">
+  <!--  IMPORTANT: key ? key : (name | translate) may be wrong -->
+  <!--  IT COULD BE:  ( key ? key : name) | translate -->
+  <mat-error *ngIf="shouldValidate && fieldControl.hasError('required')"
+    ><span class="capitalize">{{ key ? key : (name | translate) }}</span>
+    {{ "validators.required" | translate }}
+  </mat-error>
+  <mat-error *ngIf="shouldValidate && fieldControl.hasError('email')"
+    ><span class="capitalize">{{ key ? key : (name | translate) }}</span>
+    {{ "validators.email" | translate }}
+  </mat-error>
+  <mat-error *ngIf="shouldValidate && fieldControl.hasError('min')"
+    ><span class="capitalize">{{ key ? key : (name | translate) }}</span>
+    {{ "validators.min" | translate }}
+  </mat-error>
+  <mat-error *ngIf="shouldValidate && fieldControl.hasError('max')"
+    ><span class="capitalize">{{ key ? key : (name | translate) }}</span>
+    {{ "validators.max" | translate }}
+  </mat-error>
+  <mat-error *ngIf="shouldValidate && fieldControl.hasError('minlength')"
+    ><span class="capitalize">{{ key ? key : (name | translate) }}</span>
+    {{ "validators.minlength" | translate }}
+  </mat-error>
+  <mat-error *ngIf="shouldValidate && fieldControl.hasError('maxlength')"
+    ><span class="capitalize">{{ key ? key : (name | translate) }}</span>
+    {{ "validators.maxlength" | translate }}
+  </mat-error>
+</mat-hint>

@@ -1,0 +1,15 @@
+{
+  "langs": {
+    "en": "English",
+    "ae": "العربية"
+  },
+  "email": "email",
+  "name": "name",
+  "description": "description",
+  "submit": "submit",
+  "navigation": {
+    "home": "home"
+  },
+  "footer": {},
+  "home": {}
+}

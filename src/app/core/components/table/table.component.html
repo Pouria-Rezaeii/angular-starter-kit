@@ -1,0 +1,89 @@
+<div
+  *ngIf="!isLoading && dataSource"
+  class="mat-elevation-z8 overflow-x-scroll no-scrollbar"
+>
+  <div [ngStyle]="{'min-width': minWidth || '700px'}">
+    <table [dataSource]="dataSource" class="table w-full" mat-table matSort>
+      <ng-container
+        *ngFor="let item of displayedColumns"
+        matColumnDef="{{ item }}"
+      >
+        <th
+          *matHeaderCellDef
+          class="!font-medium !text-sm capitalize"
+          mat-header-cell
+          mat-sort-header
+        >
+          {{ item | translate }}
+        </th>
+        <tbody>
+          <td *matCellDef="let element" [ngSwitch]="item" mat-cell>
+            <span *ngSwitchDefault>{{
+              element[item] !== "null null" ? element[item] : "-"
+            }}</span>
+            <section
+              *ngSwitchCase="'actions'"
+              [class]="config.actionsBoxCssClass || 'flex gap-2'"
+            >
+              <ng-container *ngFor="let action of config?.actions">
+                <ng-container
+                  *ngIf="action.if !== undefined ? action.if : true"
+                >
+                  <!-- <button-->
+                  <!--   (click)="action.handler(element)"-->
+                  <!--   *dhlHasAccess="action.roles || []"-->
+                  <!--   mat-icon-button-->
+                  <!--   [class]="'icon-small '.concat(action.cssClass)"-->
+                  <!--   [ngClass]="{'!invisible': action.hideActionCondition?.(element)}"-->
+                  <!-- > -->
+                  <button
+                    (click)="action.handler(element)"
+                    mat-icon-button
+                    [class]="'icon-small '.concat(action.cssClass)"
+                  >
+                    <mat-icon>
+                      {{
+                        action.icon ? action.icon : (action.label | translate)
+                      }}
+                    </mat-icon>
+                  </button>
+                </ng-container>
+              </ng-container>
+            </section>
+          </td>
+        </tbody>
+      </ng-container>
+
+      <tr *matHeaderRowDef="displayedColumns" mat-header-row></tr>
+      <tr *matRowDef="let row; columns: displayedColumns" mat-row></tr>
+      <!-- Row shown when there is no matching data. -->
+      <tr *matNoDataRow class="mat-row no-hover-effect" style="display: block">
+        <td class="mat-cell !pt-4 !pb-2" style="width: 100%">
+          {{ "no-data" | translate }}
+        </td>
+      </tr>
+    </table>
+
+    <mat-paginator
+      (page)="changePagination($event)"
+      [length]="length"
+      [pageIndex]="pageIndex"
+      [pageSizeOptions]="[5, 10, 25, 100]"
+      [pageSize]="pageSize"
+    ></mat-paginator>
+  </div>
+</div>
+
+<!-- rendering skeleton -->
+<ngx-skeleton-loader
+  *ngIf="isLoading"
+  [theme]="{
+    'border-radius': '5px',
+    height: '50px',
+    width: '100%',
+    'background-color': 'rgba(206,206,206,0.29)',
+    border: '1px solid white'
+  }"
+  appearance="line"
+  count="8"
+></ngx-skeleton-loader>

@@ -1,0 +1,21 @@
+<div [formGroup]="formGroup">
+  <label>
+    <span class="capitalize block mb-2 text-text-secondary">
+      {{ labelKey ? (labelKey | translate) : label }}
+    </span>
+    <input
+      class="input"
+      [id]="formControlName"
+      [type]="type"
+      [disabled]="disabled"
+      [formControlName]="formControlName"
+      [placeholder]="
+        placeholderKey ? (placeholderKey | translate) : placeholder
+      "
+    />
+  </label>
+</div>
+<app-validators-error
+  [form]="formGroup"
+  [name]="formControlName"
+></app-validators-error>

@@ -1,0 +1,43 @@
+@use "@angular/material" as mat;
+
+//@import url("./assets/styles/normalize.min.scss");
+@import url("./assets/styles/fonts.css");
+@import url("./assets/styles/variables.scss");
+@import url("./assets/styles/global.scss");
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+@tailwind screens;
+
+@include mat.core();
+
+$green-palette: (
+  100: var(--primary-light),
+  500: var(--primary-main),
+  700: var(--primary-dark),
+  contrast: (),
+);
+
+$yellow-palette: (
+  100: var(--secondary-main),
+  500: var(--secondary-main),
+  700: var(--secondary-main),
+  contrast: (),
+);
+
+// Define a light theme
+$light-theme: mat.define-light-theme(
+  (
+    color: (
+      primary: mat.define-palette($green-palette),
+      accent: mat.define-palette($yellow-palette),
+    ),
+  )
+);
+
+// Use the `-color` mixins to only apply color styles without reapplying the same
+// typography and density styles.
+@include mat.core-color($light-theme);
+@include mat.button-color($light-theme);
+@include mat.all-component-colors($light-theme);

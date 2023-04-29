@@ -1,0 +1,24 @@
+<div class="flex w-full justify-between items-center p-4 ps-6 pe-2 mb-8 mt-3">
+  <h1
+    class="text-text-primary-dark text-xl font-medium uppercase cursor-pointer"
+    routerLink="/"
+  >
+    LOGO
+  </h1>
+  <button mat-icon-button (click)="closeDrawer()">
+    <mat-icon style="color: white">close </mat-icon>
+  </button>
+</div>
+<ul class="flex flex-col gap-2 ps-4">
+  <li
+    *ngFor="let item of menuItems"
+    [routerLink]="item.route"
+    routerLinkActive="text-primary-main"
+    [routerLinkActiveOptions]="{exact: item.route === '/'}"
+    class="navigation__menu-item w-full py-[13px] px-[11px] text-lg text-text-primary hover:text-white cursor-pointer capitalize"
+    style="transition: 0.3s"
+    (click)="closeDrawer()"
+  >
+    {{ item.translateKey | translate }}
+  </li>
+</ul>

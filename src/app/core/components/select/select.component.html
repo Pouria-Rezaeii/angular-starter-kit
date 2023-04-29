@@ -1,0 +1,24 @@
+<mat-form-field appearance="outline" class="w-full" [formGroup]="formGroup">
+  <mat-label>{{ label | translate }}</mat-label>
+  <mat-select
+    [id]="formControlName"
+    [disabled]="disabled"
+    [formControlName]="formControlName"
+    [multiple]="multiple"
+    class="capitalize"
+    (selectionChange)="onSelectionChange($event)"
+  >
+    <mat-option
+      *ngFor="let opt of transformedOptions"
+      [value]="opt.value"
+      class="capitalize"
+      >{{
+        getTranslationWithPrefix(opt?.key ? opt?.key : $any(opt)) | translate
+      }}</mat-option
+    >
+  </mat-select>
+</mat-form-field>
+<app-validators-error
+  [form]="formGroup"
+  [name]="formControlName"
+></app-validators-error>

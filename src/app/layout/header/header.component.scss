@@ -1,0 +1,17 @@
+.header {
+  height: var(--header-height);
+}
+
+.navigation__hamburger-icon {
+  width: 32px;
+  height: 32px;
+  border-radius: 3px !important;
+  padding: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  &:hover * {
+    color: var(--text-secondary);
+  }
+}

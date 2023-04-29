@@ -1,0 +1,12 @@
+.text-area {
+  width: 100%;
+  color: var(--text-secondary);
+
+  &:focus {
+  }
+
+  &::placeholder {
+    text-transform: capitalize;
+    opacity: 0.5;
+  }
+}

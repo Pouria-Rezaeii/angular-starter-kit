@@ -1,0 +1,19 @@
+/* IMPORTANT: some of these colors are hard coded also in tailwind.config.js */
+/* If you want to change theme, change in both files */
+
+:root {
+  /* sizes */
+  --header-height: 110px;
+
+  /* colors */
+  --primary-light: #efc245;
+  --primary-main: #e0af2e;
+  --primary-dark: #c08f0e;
+  --secondary-main: #ffffff;
+  --background-default: #f4f4f4;
+  --text-primary: #333333;
+  --text-secondary: #a19f9e;
+
+  /* fonts */
+  --font-main: Rubik;
+}

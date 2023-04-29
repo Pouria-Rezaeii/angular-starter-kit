@@ -1,0 +1,12 @@
+<ul class="flex gap-2">
+  <li
+    *ngFor="let item of menuItems"
+    [routerLink]="item.route"
+    routerLinkActive="text-primary-main"
+    [routerLinkActiveOptions]="{exact: item.route === '/'}"
+    class="navigation__menu-item py-[13px] px-[11px] text-lg text-text-primary cursor-pointer capitalize"
+    style="transition: 0.3s"
+  >
+    {{ item.translateKey | translate }}
+  </li>
+</ul>

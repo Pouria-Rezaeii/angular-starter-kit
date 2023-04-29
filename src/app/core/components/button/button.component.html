@@ -1,0 +1,19 @@
+<button
+  mat-flat-button
+  color="primary"
+  [disabled]="disabled"
+  (click)="handleClick($event)"
+  class="button font-medium uppercase"
+  [ngClass]="{
+    'primary-main': color === 'primary-main',
+    'primary-dark': color === 'primary-dark',
+    'primary-light': color === 'primary-light',
+    secondary: color === 'secondary',
+    small: size === 'small',
+    medium: size === 'medium',
+    large: size === 'large',
+    disabled: disabled,
+  }"
+>
+  <ng-content></ng-content>
+</button>

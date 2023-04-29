@@ -1,0 +1,16 @@
+<mat-card>
+  <h1>{{ "areYouSure" | translate }}</h1>
+  <div class="w-full flex justify-end gap-2 mt-8">
+    <button (click)="onSelect(false)" color="accent" mat-flat-button>
+      {{ "no" | translate }}
+    </button>
+    <button
+      (click)="onSelect(true)"
+      class="!bg-info"
+      color="accent"
+      mat-flat-button
+    >
+      {{ "yes" | translate }}
+    </button>
+  </div>
+</mat-card>

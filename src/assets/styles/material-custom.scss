@@ -1,0 +1,74 @@
+button.mat-mdc-icon-button {
+  background-color: #00000011;
+  display: inline-block;
+}
+
+button.mdc-button,
+a.mdc-button,
+a.mat-mdc-tab-link,
+label.mdc-floating-label {
+  letter-spacing: 0.25px;
+  text-transform: capitalize;
+}
+
+.mdc-button[disabled="true"] {
+  background-color: #d8d8d8 !important;
+}
+
+//for pagination material table
+.mat-mdc-paginator-range-actions {
+  .mat-mdc-icon-button {
+    background-color: initial;
+  }
+}
+
+.mat-mdc-menu-item .mat-icon {
+  margin-right: 0px !important;
+}
+
+.mat-mdc-card-header-text {
+  padding-top: 8px;
+}
+
+.mat-mdc-flat-button,
+.mat-mdc-raised-button,
+.mat-mdc-fab,
+.mat-mdc-mini-fab {
+  &.mat-mdc-primary,
+  &.mat-mdc-accent,
+  &.mat-mdc-warn {
+    &:not(.mat-mdc-button-disabled) * {
+      color: #000000 !important;
+    }
+  }
+}
+
+.mat-mdc-simple-snack-bar-content {
+  color: white;
+}
+
+.mat-mdc-standard-chip {
+  height: auto !important;
+}
+
+mat-card {
+  padding: 16px;
+
+  .mat-mdc-card-content {
+    padding: initial;
+  }
+}
+
+.mat-cell {
+  padding: 0.5rem 1rem !important;
+}
+
+.mdc-tab {
+  border: 1px solid #eee !important;
+  border-top-left-radius: 4px;
+  border-top-right-radius: 4px;
+}
+
+[dir="rtl"] .mat-mdc-menu-item .mat-icon {
+  margin-left: 0 !important;
+}

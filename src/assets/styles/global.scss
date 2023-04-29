@@ -1,0 +1,38 @@
+body {
+  font-family: var(--font-main), "Lato", sans-serif;
+  line-height: 1.7;
+}
+
+/* Hide scrollbar for IE, Edge and Firefox */
+.no-scrollbar::-webkit-scrollbar {
+  display: none;
+}
+
+.no-scrollbar {
+  -ms-overflow-style: none; /* IE and Edge */
+  scrollbar-width: none; /* Firefox */
+}
+
+.icon-small {
+  width: 35px !important;
+  height: 35px !important;
+  padding: 0 !important;
+  display: flex !important;
+  justify-content: center !important;
+  align-items: center !important;
+}
+
+.max-width {
+  width: 100%;
+  max-width: 1260px;
+  margin: 0 auto;
+  padding: 0 1.5rem;
+}
+
+.border-red {
+  border: 1px solid red !important;
+}
+
+.border-blue {
+  border: 1px dashed blue !important;
+}
