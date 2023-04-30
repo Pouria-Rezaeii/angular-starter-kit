@@ -19,6 +19,7 @@ import {MainConfigurationService} from "./shared/services/main-configuration.ser
 import {environment} from "../environments/environment";
 import {AuthGuard} from "./core/guards/auth.guard";
 import {UserService} from "./shared/services/user.service";
+import {HasAccessDirective} from "./core/directives/has-access.directive";
 
 export function HttpLoaderFactory(http: HttpClient) {
   return new TranslateHttpLoader(http, "./assets/i18n/", ".json");
@@ -42,7 +43,7 @@ function initializeKeycloak(keycloak: KeycloakService) {
 }
 
 @NgModule({
-  declarations: [AppComponent],
+  declarations: [AppComponent, HasAccessDirective],
   imports: [
     SharedModule,
     BrowserModule,
