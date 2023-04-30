@@ -29,6 +29,23 @@ body {
   padding: 0 1.5rem;
 }
 
+.dialog__container {
+  .dialog__title {
+    font-size: 1.5rem;
+    text-transform: capitalize;
+    font-weight: 500;
+  }
+  .dialog__content-box {
+  }
+  .dialog__controls-box {
+    width: 100%;
+    display: flex;
+    justify-content: flex-end;
+    gap: 0.5rem;
+    margin-top: 2rem;
+  }
+}
+
 .border-red {
   border: 1px solid red !important;
 }

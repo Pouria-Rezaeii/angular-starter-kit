@@ -1,6 +1,7 @@
-<mat-card>
-  <h1>{{ "areYouSure" | translate }}</h1>
-  <div class="w-full flex justify-end gap-2 mt-8">
+<mat-card class="dialog__container">
+  <h1 class="dialog__title">{{ "areYouSure" | translate }}</h1>
+  <div class="dialog__content-box"></div>
+  <div class="dialog__controls-box">
     <button (click)="onSelect(false)" color="accent" mat-flat-button>
       {{ "no" | translate }}
     </button>

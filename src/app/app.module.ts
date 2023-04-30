@@ -7,7 +7,7 @@ import {TranslateHttpLoader} from "@ngx-translate/http-loader";
 import {ServiceWorkerModule} from "@angular/service-worker";
 import {NgxSkeletonLoaderModule} from "ngx-skeleton-loader";
 import {NgxSpinnerModule} from "ngx-spinner";
-import {ToastrModule, ToastrService} from "ngx-toastr";
+import {ToastrModule} from "ngx-toastr";
 
 import {AppComponent} from "./app.component";
 import {SharedModule} from "./shared/shared.module";
@@ -15,6 +15,8 @@ import {LayoutModule} from "./layout/layout.module";
 import {HomeModule} from "./home/home.module";
 import {AppRoutingModule} from "./app-routing.module";
 import {MainConfigurationService} from "./shared/services/main-configuration.service";
+import {AppToastService} from "./shared/services/app-toast.service";
+import {MAT_DIALOG_DEFAULT_OPTIONS} from "@angular/material/dialog";
 
 export function HttpLoaderFactory(http: HttpClient) {
   return new TranslateHttpLoader(http, "./assets/i18n/", ".json");
@@ -30,8 +32,7 @@ export function HttpLoaderFactory(http: HttpClient) {
     LayoutModule,
     HomeModule,
     ToastrModule.forRoot(),
-    // IMPORTANT: if changing the type, make a change also in app.module and angular.json (style import)
-    NgxSpinnerModule.forRoot({type: "ball-scale-multiple"}),
+    NgxSpinnerModule.forRoot(),
     TranslateModule.forRoot({
       loader: {
         provide: TranslateLoader,
@@ -50,7 +51,11 @@ export function HttpLoaderFactory(http: HttpClient) {
       loadingText: "Loading...",
     }),
   ],
-  providers: [MainConfigurationService, ToastrService],
+  providers: [
+    MainConfigurationService,
+    AppToastService,
+    {provide: MAT_DIALOG_DEFAULT_OPTIONS, useValue: {hasBackdrop: true}},
+  ],
   bootstrap: [AppComponent],
 })
 export class AppModule {}
