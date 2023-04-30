@@ -5,6 +5,11 @@ export const environment = {
   production: true,
   defaultLanguage: "en",
   toasterTimeOut:10000,
+  auth: {
+    url: "http://subdomain.domain.net:8080",
+    realm: "realm",
+    clientId: "clientId",
+  },
 };
 
 /*

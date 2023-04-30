@@ -5,6 +5,12 @@ export const environment = {
   production: false,
   defaultLanguage: "en",
   toasterTimeOut:10000,
+  auth: {
+    // ATTENTION: When updating the auth fields, remember to update the serve script if required
+    url: "http://subdomain.domain.net:8080",
+    realm: "realm",
+    clientId: "clientId",
+  },
 };
 
 /*

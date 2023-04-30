@@ -1,4 +1,4 @@
-import {NgModule, isDevMode} from "@angular/core";
+import {APP_INITIALIZER, NgModule, isDevMode} from "@angular/core";
 import {BrowserModule} from "@angular/platform-browser";
 import {BrowserAnimationsModule} from "@angular/platform-browser/animations";
 import {TranslateLoader, TranslateModule} from "@ngx-translate/core";
@@ -8,6 +8,7 @@ import {ServiceWorkerModule} from "@angular/service-worker";
 import {NgxSkeletonLoaderModule} from "ngx-skeleton-loader";
 import {NgxSpinnerModule} from "ngx-spinner";
 import {ToastrModule, ToastrService} from "ngx-toastr";
+import {KeycloakAngularModule, KeycloakService} from "keycloak-angular";
 
 import {AppComponent} from "./app.component";
 import {SharedModule} from "./shared/shared.module";
@@ -15,9 +16,29 @@ import {LayoutModule} from "./layout/layout.module";
 import {HomeModule} from "./home/home.module";
 import {AppRoutingModule} from "./app-routing.module";
 import {MainConfigurationService} from "./shared/services/main-configuration.service";
+import {environment} from "../environments/environment";
+import {AuthGuard} from "./core/guards/auth.guard";
+import {UserService} from "./shared/services/user.service";
 
 export function HttpLoaderFactory(http: HttpClient) {
   return new TranslateHttpLoader(http, "./assets/i18n/", ".json");
+}
+
+function initializeKeycloak(keycloak: KeycloakService) {
+  return () =>
+    keycloak.init({
+      config: {
+        url: environment.auth.url,
+        realm: environment.auth.realm,
+        clientId: environment.auth.clientId,
+      },
+      initOptions: {
+        onLoad: "login-required",
+
+        silentCheckSsoRedirectUri:
+          window.location.origin + "/assets/silent-check-sso.html",
+      },
+    });
 }
 
 @NgModule({
@@ -27,6 +48,7 @@ export function HttpLoaderFactory(http: HttpClient) {
     BrowserModule,
     BrowserAnimationsModule,
     AppRoutingModule,
+    KeycloakAngularModule,
     LayoutModule,
     HomeModule,
     ToastrModule.forRoot(),
@@ -50,7 +72,18 @@ export function HttpLoaderFactory(http: HttpClient) {
       loadingText: "Loading...",
     }),
   ],
-  providers: [MainConfigurationService, ToastrService],
+  providers: [
+    MainConfigurationService,
+    ToastrService,
+    UserService,
+    AuthGuard,
+    {
+      provide: APP_INITIALIZER,
+      useFactory: initializeKeycloak,
+      multi: true,
+      deps: [KeycloakService],
+    },
+  ],
   bootstrap: [AppComponent],
 })
 export class AppModule {}
