@@ -17,13 +17,14 @@ import {AppRoutingModule} from "./app-routing.module";
 import {MainConfigurationService} from "./shared/services/main-configuration.service";
 import {AppToastService} from "./shared/services/app-toast.service";
 import {MAT_DIALOG_DEFAULT_OPTIONS} from "@angular/material/dialog";
+import {DataTestIdDirective} from "./core/directives/data-test-id.directive";
 
 export function HttpLoaderFactory(http: HttpClient) {
   return new TranslateHttpLoader(http, "./assets/i18n/", ".json");
 }
 
 @NgModule({
-  declarations: [AppComponent],
+  declarations: [AppComponent, DataTestIdDirective],
   imports: [
     SharedModule,
     BrowserModule,

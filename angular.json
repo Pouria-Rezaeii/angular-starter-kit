@@ -119,12 +119,62 @@
           "options": {
             "lintFilePatterns": ["src/**/*.ts", "src/**/*.html"]
           }
+        },
+        "cypress-run": {
+          "builder": "@cypress/schematic:cypress",
+          "options": {
+            "devServerTarget": "angular-starter-kit:serve"
+          },
+          "configurations": {
+            "production": {
+              "devServerTarget": "angular-starter-kit:serve:production"
+            }
+          }
+        },
+        "cypress-open": {
+          "builder": "@cypress/schematic:cypress",
+          "options": {
+            "watch": true,
+            "headless": false
+          }
+        },
+        "ct": {
+          "builder": "@cypress/schematic:cypress",
+          "options": {
+            "devServerTarget": "angular-starter-kit:serve",
+            "watch": true,
+            "headless": false,
+            "testingType": "component"
+          },
+          "configurations": {
+            "development": {
+              "devServerTarget": "angular-starter-kit:serve:development"
+            }
+          }
+        },
+        "e2e": {
+          "builder": "@cypress/schematic:cypress",
+          "options": {
+            "devServerTarget": "angular-starter-kit:serve",
+            "watch": true,
+            "headless": false
+          },
+          "configurations": {
+            "production": {
+              "devServerTarget": "angular-starter-kit:serve:production"
+            }
+          }
         }
       }
     }
   },
   "cli": {
     "analytics": "5b9ef685-87a8-46f4-8cb9-016f9dc37602",
-    "schematicCollections": ["@angular-eslint/schematics"]
+    "schematicCollections": [
+      "@cypress/schematic",
+      "@cypress/schematic",
+      "@angular-eslint/schematics",
+      "@schematics/angular"
+    ]
   }
 }
